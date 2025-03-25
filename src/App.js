@@ -117,11 +117,11 @@ function App() {
 
     try {
       // Create prompt for OpenAI
-      const prompt = `Dada la siguiente lista de destinos: ${routes
+      const prompt = `Utiliza el siguiente bloque de texto, que contiene varias rutas, para determinar la ruta óptima de manera directa: ${routes
         .map((route) => `– ${route}`)
         .join(
           " "
-        )} Indica la ruta óptima para llegar a todos los destinos de manera eficiente, organizando el orden de visita de forma sencilla y sin introducciones innecesarias.`;
+        )} Tareas: Extrae y procesa los datos tal como están, sin modificar el formato. Suma las distancias de cada tramo de cada ruta (distancia de las carreras y calles indicadas). Determina la ruta óptima basándote únicamente en la distancia total recorrida, utilizando un modelo de optimización (por ejemplo, optimización combinatoria o un algoritmo de búsqueda). Organiza el orden de visita de todos los destinos de forma eficiente. Condiciones: Considera únicamente las distancias indicadas, sin tener en cuenta tráfico ni datos históricos. Si el bloque de texto presenta ambigüedad, indícalo brevemente, sin extender explicaciones. La respuesta final debe contener únicamente el orden de la ruta óptima y la distancia total, en el siguiente formato: "Ruta óptima: [detalle de la ruta]" No incluyas explicaciones adicionales, solo muestra el resultado de la optimización.`;
 
       // Call OpenAI API
       const response = await fetch(
